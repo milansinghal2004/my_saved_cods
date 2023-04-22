@@ -1,0 +1,52 @@
+from selenium import webdriver
+from openpyxl import Workbook
+from selenium.webdriver.common.by import By
+# initialize the driver
+driver = webdriver.Chrome()
+
+# navigate to Amazon
+driver.get('https://www.amazon.com/')
+
+# find the search box and enter the search query
+search_box = driver.find_element(By.ID, 'twotabsearchtextbox')
+search_box.send_keys('Sugar')
+search_box.submit()
+
+# wait for the search results to load
+driver.implicitly_wait(20)
+
+# find all the products on the first page and extract their title and price
+products = driver.find_elements(By.CSS_SELECTOR, 'div.s-result-item')[:5]
+# print(products.text)
+# print(type(products))
+product_data = []
+for product in products:
+    title = product.find_elements(
+        By.CSS_SELECTOR, 'span.a-text-normal')[0].text
+    #price = product.find_elements(By.CSS_SELECTOR, 'span.a-price-whole').text
+    price = "N/A"
+    # print(price)
+    # print(type(price))
+    product_data.append([title, price])
+
+# close the driver
+driver.quit()
+
+# create a new workbook
+workbook = Workbook()
+worksheet = workbook.active
+
+# write the headers to the worksheet
+worksheet['A1'] = 'Discription'
+worksheet['B1'] = 'Price'
+
+# write the product data to the worksheet
+for row_data in product_data:
+    worksheet.append(row_data)
+
+# format the worksheet
+for column_cells in worksheet.columns:
+    length = max(len(str(cell.value)) for cell in column_cells)
+    worksheet.column_dimensions[column_cells[0].column_letter].width = length
+# save the workbook
+workbook.save('amazon_list.xlsx')
