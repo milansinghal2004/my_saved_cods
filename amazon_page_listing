@@ -20,7 +20,7 @@ search_box.submit()
 driver.implicitly_wait(20)
 
 # find all the products on the first page and extract their title and price
-products = driver.find_elements(By.CSS_SELECTOR, 'div.s-result-item')[:5]
+products = driver.find_elements(By.CSS_SELECTOR, 'div.s-result-item')[:6]
 # print(products.text)
 # print(type(products))
 product_data = []
