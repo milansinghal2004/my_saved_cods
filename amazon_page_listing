@@ -8,7 +8,6 @@ from selenium.webdriver.common.by import By
 # initialize the driver
 driver = webdriver.Chrome()
 
-
 # navigate to Amazon
 driver.get('https://www.amazon.com/')
 
