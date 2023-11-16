@@ -1,5 +1,5 @@
-/*Discription: Stack using linked list in c language
-Author: Rajdeep Singh Sidhu
+//Discription: Stack using linked list in c language
+/*Author: Rajdeep Singh Sidhu
 Date: 30/03/23*/
 #include <stdio.h>
 #include <malloc.h>
