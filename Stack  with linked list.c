@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-
+//Author: Rajdeep Singh Sidhu
+//Date: 16-10-2023
 struct node
 {
     int data;
