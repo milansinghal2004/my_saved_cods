@@ -1,11 +1,15 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
+//Author: Rajdeep Singh Sidhu
+//Date: 16-10-2023
 struct node
 {
     int data;
     struct node *next;
 };
+
 struct node *head = NULL;
 void insert_at_beg(struct node *new);
 void insert_at_end(struct node *new);
